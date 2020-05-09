@@ -1,0 +1,40 @@
+{% extends 'weather/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div>
+<form method='POST'>
+{% csrf_token %}
+    {{form|crispy}}
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Add City</button>
+    </div>
+</form>
+</div>
+
+<div class="container cover"> 
+    {% for city_weather in city_list %}
+        <div class="card">
+        <div class="card-body">
+            <img class='weather-icon' src='http://openweathermap.org/img/w/{{ city_weather.icon }}.png'/>
+            <h3 class="card-title weather-city">{{ city_weather.city }}</h3>
+            <h5 class="card-text weather-description">{{ city_weather.weather }} </h5>
+            <h5 class="card-text weather-description">{{ city_weather.temperature }} </h5>
+            <div class='weather-delete'>
+            <a class='btn btn-outline-danger btn-sm' href="{% url 'delete_city' city_weather.id %}">Delete</a>
+            </div>
+            
+        </div>
+        </div>
+    {% endfor %}
+    {% if err_msg %}
+        <div class="is-danger">
+            <p>{{err_msg}}</p>
+        </div>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

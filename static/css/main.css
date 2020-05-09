@@ -1,0 +1,34 @@
+body{
+    height: 100%;
+    width: 100%;
+}
+.cover{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+.inner{
+    display: flex;
+}
+.container-1{
+    padding: 20px;
+}
+.weather-icon{
+    padding: 15px;
+}
+.card-body{
+    display: flex;
+}
+.weather-city{
+    padding: 18px;
+}
+.weather-description{
+    padding: 22.5px;
+}
+.card{
+    margin-bottom: 20px;
+}
+.weather-delete{
+    padding: 21px;
+}
